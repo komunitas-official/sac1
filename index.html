@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>SAC - Science Astronomy Community</title>
+    <style>
+        body { background: #050510; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .step { display: none; text-align: center; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid #334155; }
+        .active { display: block; }
+        input { padding: 10px; margin: 10px 0; width: 250px; display: block; border-radius: 5px; border: none; }
+        button { padding: 10px 20px; background: #0369a1; color: white; border: none; cursor: pointer; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<div id="step1" class="step active">
+    <h2>Masuk ke SAC</h2>
+    <input type="text" id="user" placeholder="Username">
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="nextStep(2)">Masuk</button>
+</div>
+
+<div id="step2" class="step">
+    <h2>Verifikasi Akun Google</h2>
+    <p>Wajib menggunakan akun Google utama.</p>
+    <button onclick="nextStep(3)">Login dengan Google</button>
+</div>
+
+<div id="step3" class="step">
+    <h2>Verifikasi Usia</h2>
+    <input type="number" id="age" placeholder="Masukkan Usia Anda">
+    <button onclick="checkAge()">Verifikasi</button>
+</div>
+
+<div id="step4" class="step">
+    <a href="https://chat.whatsapp.com/B9m1wX68ntHA3par8BTmVq?s=cl&p=a&mlu=4" target="_blank">
+        <button>Masuk Komunitas WhatsApp</button>
+    </a>
+</div>
+
+<script>
+    function nextStep(step) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step' + step).classList.add('active');
+    }
+
+    function checkAge() {
+        let age = document.getElementById('age').value;
+        if (age >= 17) {
+            nextStep(4);
+        } else {
+            alert("Maaf, usia belum memenuhi syarat keamanan.");
+        }
+    }
+</script>
+</body>
+</html>
